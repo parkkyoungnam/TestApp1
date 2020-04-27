@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TestApp1"
+             xmlns:vm="clr-namespace:TestApp1.ViewModel"
+             x:Class="TestApp1.MainPage">
+
+    <ContentPage.BindingContext>
+        <vm:MainPageViewModel />
+    </ContentPage.BindingContext>
+    
+    <Grid Margin="5,5,5,5">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />           <RowDefinition Height="40" />
+            <RowDefinition Height="40" />           <RowDefinition Height="40" />
+            <RowDefinition Height="40" />           <RowDefinition Height="40" />
+            <RowDefinition Height="40" />           <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />        <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label
+            x:Name="lblTitle"
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Text="User Information Manager"  
+            Style="{StaticResource LabelNormalStyle}">
+        </Label>
+
+        <Label
+            Text="UserId"  
+            Grid.Row="1" 
+            Grid.Column="0" 
+            Style="{StaticResource LabelNormalStyle}">
+        </Label>
+
+        <Entry  Text="{Binding UserID,Mode=TwoWay}"  Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill"></Entry>
+      
+        <Label Grid.Row="2" Grid.Column="0" Text="UserName"  VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Large"></Label>
+
+        <Entry Text="{Binding UserName,Mode=TwoWay}"  Grid.Row="2" Grid.Column="1" HorizontalOptions="Fill"></Entry>
+        
+        <Label Grid.Row="3" Grid.Column="0" Text="Email"  VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Large"></Label>
+
+        <Entry Text="{Binding Email,Mode=TwoWay}" Grid.Row="3" Grid.Column="1" HorizontalOptions="Fill"></Entry>
+        
+        <Label Grid.Row="4" Grid.Column="0" Text="Telephone"  VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Large"></Label>
+
+        <Entry Text="{Binding Telephone,Mode=TwoWay}"  Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill"></Entry>
+       
+        <Label Grid.Row="5" Grid.Column="0" Text="RegistDate"  VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Large"></Label>
+
+        <Entry Text="{Binding RegistDate,Mode=TwoWay}" Grid.Row="5" Grid.Column="1" HorizontalOptions="Fill"></Entry>
+
+        <StackLayout Grid.Row="6" Grid.ColumnSpan="2" HorizontalOptions="Center" Orientation="Horizontal">
+
+            <Button Command="{Binding RegistCommand}" Text="REGIST"></Button>
+
+            <Button Command="{Binding ModifyCommand}" CommandParameter="M" Text="MODIFY"></Button>
+
+            <Button Command="{Binding DeleteCommand}" Text="DELETE"></Button>
+        </StackLayout>
+
+        <ListView Grid.Row="7" Grid.ColumnSpan="2" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" BackgroundColor="Gray" >
+        </ListView>
+
+    </Grid>
+</ContentPage>
